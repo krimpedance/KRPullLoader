@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="LdJ-sP-gKr">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--CollectionView-->
+        <scene sceneID="HXc-Ox-foK">
+            <objects>
+                <viewController id="vlQ-Aq-SuS" customClass="CollectionViewSampleVC" customModule="KRPullLoaderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="uZC-fr-LB5"/>
+                        <viewControllerLayoutGuide type="bottom" id="eXl-y6-Sep"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kAe-Je-yde">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2cm-2O-7fu">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="TME-Cp-UzK">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="fPi-c2-zGL">
+                                        <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SfG-Gn-YWE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="KRPullLoader" id="Anh-EW-4Dx"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="SfG-Gn-YWE" firstAttribute="leading" secondItem="kAe-Je-yde" secondAttribute="leading" id="OlH-at-ZBx"/>
+                            <constraint firstItem="2cm-2O-7fu" firstAttribute="top" secondItem="SfG-Gn-YWE" secondAttribute="bottom" id="Rq1-RR-HNB"/>
+                            <constraint firstAttribute="trailing" secondItem="2cm-2O-7fu" secondAttribute="trailing" id="S5r-42-U1o"/>
+                            <constraint firstAttribute="trailing" secondItem="SfG-Gn-YWE" secondAttribute="trailing" id="dMi-AI-OYK"/>
+                            <constraint firstItem="2cm-2O-7fu" firstAttribute="leading" secondItem="kAe-Je-yde" secondAttribute="leading" id="kiG-Vx-QY8"/>
+                            <constraint firstItem="eXl-y6-Sep" firstAttribute="top" secondItem="2cm-2O-7fu" secondAttribute="bottom" id="ubF-ls-gIT"/>
+                            <constraint firstItem="SfG-Gn-YWE" firstAttribute="top" secondItem="uZC-fr-LB5" secondAttribute="bottom" id="yOi-Oc-7To"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="CollectionView" id="Xbb-Xu-v9j"/>
+                    <connections>
+                        <outlet property="collectionView" destination="2cm-2O-7fu" id="17f-gp-w8b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TcM-pH-Dbl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="1603"/>
+        </scene>
+        <!--TableView-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="TableViewSampleVC" customModule="KRPullLoaderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OS3-uP-PAE">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="KRPullLoader" id="mRH-Ln-t80"/>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hzC-pn-qOl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" id="qma-st-HIS">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qma-st-HIS" id="Jom-kg-jMz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="hzC-pn-qOl" secondAttribute="bottom" id="3FW-TW-nNb"/>
+                            <constraint firstItem="hzC-pn-qOl" firstAttribute="top" secondItem="OS3-uP-PAE" secondAttribute="bottom" id="C0u-ku-wi0"/>
+                            <constraint firstItem="hzC-pn-qOl" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="CFS-RZ-aqQ"/>
+                            <constraint firstAttribute="trailing" secondItem="hzC-pn-qOl" secondAttribute="trailing" id="FmB-4h-sF9"/>
+                            <constraint firstItem="OS3-uP-PAE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="P6A-xS-V36"/>
+                            <constraint firstItem="OS3-uP-PAE" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="XbZ-Mb-TKq"/>
+                            <constraint firstAttribute="trailing" secondItem="OS3-uP-PAE" secondAttribute="trailing" id="f8b-SH-lG5"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="TableView" id="DFg-2S-JR4"/>
+                    <connections>
+                        <outlet property="tableView" destination="hzC-pn-qOl" id="QF1-hd-XoY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-247" y="1603"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="Rfl-hc-4Om">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="LdJ-sP-gKr" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="J32-Ex-roD">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="D5w-je-xT0"/>
+                        <segue destination="vlQ-Aq-SuS" kind="relationship" relationship="viewControllers" id="O8s-X4-0AD"/>
+                        <segue destination="BFt-wn-VoM" kind="relationship" relationship="viewControllers" id="Ecd-2G-HyV"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eIj-WB-gMe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="740" y="842"/>
+        </scene>
+        <!--HorizontalCollectionView-->
+        <scene sceneID="sbR-zx-hXj">
+            <objects>
+                <viewController id="BFt-wn-VoM" customClass="HorizontalCollectionViewSampleVC" customModule="KRPullLoaderDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="JVj-zh-tUK"/>
+                        <viewControllerLayoutGuide type="bottom" id="gPd-KI-mgL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jkg-nd-SpO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4Gf-YM-3XF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NLV-Dn-zCc">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="TAl-ii-zgv">
+                                        <rect key="frame" x="10" y="10" width="100" height="100"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </view>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HnI-ai-6FV">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="KRPullLoader" id="u7s-Tz-MBU"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4Gf-YM-3XF" secondAttribute="trailing" id="5v0-Uu-irD"/>
+                            <constraint firstItem="HnI-ai-6FV" firstAttribute="top" secondItem="JVj-zh-tUK" secondAttribute="bottom" id="Dhx-wF-IHb"/>
+                            <constraint firstItem="gPd-KI-mgL" firstAttribute="top" secondItem="4Gf-YM-3XF" secondAttribute="bottom" id="Ov1-6h-HvX"/>
+                            <constraint firstAttribute="trailing" secondItem="HnI-ai-6FV" secondAttribute="trailing" id="RaP-kf-2Jj"/>
+                            <constraint firstItem="4Gf-YM-3XF" firstAttribute="top" secondItem="HnI-ai-6FV" secondAttribute="bottom" id="mOl-yJ-5tc"/>
+                            <constraint firstItem="4Gf-YM-3XF" firstAttribute="leading" secondItem="Jkg-nd-SpO" secondAttribute="leading" id="vSn-XY-ekN"/>
+                            <constraint firstItem="HnI-ai-6FV" firstAttribute="leading" secondItem="Jkg-nd-SpO" secondAttribute="leading" id="yiJ-kB-bTt"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="HorizontalCollectionView" id="jye-Sj-YEK"/>
+                    <connections>
+                        <outlet property="collectionView" destination="4Gf-YM-3XF" id="jmy-WK-8a7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pHs-MY-YqF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1700" y="1603"/>
+        </scene>
+    </scenes>
+</document>

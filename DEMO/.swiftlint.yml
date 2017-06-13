@@ -1,0 +1,8 @@
+disabled_rules:
+  - line_length
+  - file_length
+included:
+  - KRPullLoaderDemo
+type_body_length:
+  - 400 # warning
+  - 500 # error

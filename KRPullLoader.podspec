@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KRPullLoader"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "A 'pull to load' control for UIScrollView(, UITableView, UICollectionView, ...)."
   s.description  = "KRPullLoader is a 'pull to load' control for UIScrollView(, UITableView, UICollectionView, ...) on iOS."
   s.homepage     = "https://github.com/krimpedance/KRPullLoader"

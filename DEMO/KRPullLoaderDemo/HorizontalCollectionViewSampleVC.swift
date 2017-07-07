@@ -13,6 +13,7 @@ import KRPullLoader
 class HorizontalCollectionViewSampleVC: UIViewController {
 
    @IBOutlet weak var collectionView: UICollectionView!
+   var index = 0
 
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -31,7 +32,8 @@ extension HorizontalCollectionViewSampleVC: UICollectionViewDataSource {
    }
 
    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      return 20
+      index += 1
+      return 20 * index
    }
 
    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

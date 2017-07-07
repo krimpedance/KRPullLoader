@@ -11,6 +11,7 @@ import KRPullLoader
 class TableViewSampleVC: UIViewController {
 
    @IBOutlet weak var tableView: UITableView!
+   var index = 0
 
    override func viewDidLoad() {
       super.viewDidLoad()
@@ -34,7 +35,8 @@ extension TableViewSampleVC: UITableViewDataSource {
    }
 
    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-      return 20
+      index += 1
+      return 20 * index
    }
 
    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

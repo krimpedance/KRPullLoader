@@ -96,6 +96,7 @@ This is enum which shows the state of the scrolling.
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 1.0.1 : The bug by which the location of loading view isn't renewed is corrected.
 - 1.0.0 : First release.
 
 ## License

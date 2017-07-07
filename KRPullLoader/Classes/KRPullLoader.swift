@@ -121,9 +121,9 @@ extension KRPullLoader {
 
    func checkScrollViewContentSize() {
       guard let scrollView = scrollView, type == .loadMore else { return }
-      let isHidden = self.isHidden
+//      let isHidden = self.isHidden
       self.isHidden = scrollView.contentSize.height + scrollView.contentInset.top + scrollView.contentInset.bottom < scrollView.bounds.height
-      if self.isHidden || !isHidden { return }
+//      if self.isHidden || !isHidden { return }
       adjustLayoutConstraints()
    }
 
@@ -236,6 +236,7 @@ extension KRPullLoader {
       animateScrollViewInset(isShow: false) {
          self.state = .none
          self.addedLoadingInset = 0
+         self.adjustLayoutConstraints()
       }
    }
 

@@ -99,6 +99,7 @@ func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType)
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.0.1 : ローディングビューの位置が更新されないバグを修正.
 - 1.0.0 : 最初のリリース.
 
 ## ライセンス

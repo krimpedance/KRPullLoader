@@ -93,6 +93,11 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
          if !isHidden { updateState() }
       }
    }
+
+   override func willRemoveSubview(_ subview: UIView) {
+      guard subview == loadView else { return }
+      tearDown()
+   }
 }
 
 // MARK: - Actions -------------------
@@ -105,7 +110,6 @@ extension KRPullLoader {
 
    func tearDown() {
       removeObservers()
-      loadView.removeFromSuperview()
       removeFromSuperview()
    }
 
@@ -121,9 +125,7 @@ extension KRPullLoader {
 
    func checkScrollViewContentSize() {
       guard let scrollView = scrollView, type == .loadMore else { return }
-//      let isHidden = self.isHidden
       self.isHidden = scrollView.contentSize.height + scrollView.contentInset.top + scrollView.contentInset.bottom < scrollView.bounds.height
-//      if self.isHidden || !isHidden { return }
       adjustLayoutConstraints()
    }
 
@@ -151,8 +153,12 @@ extension KRPullLoader {
       guard let scrollView = scrollView else { return }
 
       // clear constraints
-      loadView.removeFromSuperview()
-      addSubview(loadView)
+      loadView.constraints.forEach {
+         guard ($0.firstItem as? UIView) == self || ($0.secondItem as? UIView) == self else { return }
+         loadView.removeConstraint($0)
+      }
+//      loadView.removeFromSuperview()
+//      addSubview(loadView)
       removeFromSuperview()
       scrollView.addSubview(self)
 

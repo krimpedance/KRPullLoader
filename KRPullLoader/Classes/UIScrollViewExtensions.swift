@@ -28,8 +28,7 @@ extension UIScrollView {
     - parameter loadView: view which inherited KRPullLoadable protocol.
     */
    public func removePullLoadableView<T>(_ loadView: T) where T: UIView, T: KRPullLoadable {
-      guard let loader = loadView.superview as? KRPullLoader<T> else { return }
-      loader.tearDown()
+      loadView.removeFromSuperview()
    }
 }
 

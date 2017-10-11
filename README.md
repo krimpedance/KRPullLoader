@@ -16,9 +16,9 @@
 - Possibles both of `pull refresh` and `load more`.
 
 ## Requirements
-- iOS 9.0+
-- Xcode 8.0+
-- Swift 3.0+
+- iOS 8.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRPullLoaderDemo.xcodeproj` from the DEMO directory.
@@ -96,8 +96,8 @@ This is enum which shows the state of the scrolling.
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 1.1.0 : Supported from iOS 8.0 and Swift 4.
 - 1.0.1 : The bug by which the location of loading view isn't renewed is corrected.
-- 1.0.0 : First release.
 
 ## License
 KRPullLoader is available under the MIT license. See the LICENSE file for more info.

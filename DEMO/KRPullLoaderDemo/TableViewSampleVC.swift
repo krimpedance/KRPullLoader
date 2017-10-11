@@ -24,6 +24,10 @@ class TableViewSampleVC: UIViewController {
       let loadMoreView = KRPullLoadView()
       loadMoreView.delegate = self
       tableView.addPullLoadableView(loadMoreView, type: .loadMore)
+
+      DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+         self.tableView.removePullLoadableView(refreshView)
+      }
    }
 }
 

@@ -16,9 +16,9 @@
 - `引っ張って更新`, `もっと読み込む`の両アクションに対応
 
 ## 必要環境
-- iOS 9.0+
-- Xcode 8.0+
-- Swift 3.0+
+- iOS 8.0+
+- Xcode 9.0+
+- Swift 4.0+
 
 ## デモ
 `DEMO/`以下にあるサンプルプロジェクトから確認してください．
@@ -99,8 +99,8 @@ func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType)
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.1.0 : Swift4, iOS 8.0 以降に対応.
 - 1.0.1 : ローディングビューの位置が更新されないバグを修正.
-- 1.0.0 : 最初のリリース.
 
 ## ライセンス
 KRPullLoaderはMITライセンスに準拠しています.

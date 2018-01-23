@@ -10,74 +10,74 @@ import KRPullLoader
 
 class CollectionViewSampleVC: UIViewController {
 
-   @IBOutlet weak var collectionView: UICollectionView!
-   var index = 0
+    @IBOutlet weak var collectionView: UICollectionView!
+    var index = 0
 
-   override func viewDidLoad() {
-      super.viewDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-      collectionView.dataSource = self
-      let refreshView = KRPullLoadView()
-      refreshView.delegate = self
-      collectionView.addPullLoadableView(refreshView, type: .refresh)
-      let loadMoreView = KRPullLoadView()
-      loadMoreView.delegate = self
-      collectionView.addPullLoadableView(loadMoreView, type: .loadMore)
-   }
+        collectionView.dataSource = self
+        let refreshView = KRPullLoadView()
+        refreshView.delegate = self
+        collectionView.addPullLoadableView(refreshView, type: .refresh)
+        let loadMoreView = KRPullLoadView()
+        loadMoreView.delegate = self
+        collectionView.addPullLoadableView(loadMoreView, type: .loadMore)
+    }
 }
 
 // MARK: - UICollectionView data source -------------------
 
 extension CollectionViewSampleVC: UICollectionViewDataSource {
-   func numberOfSections(in collectionView: UICollectionView) -> Int {
-      return 1
-   }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
 
-   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-      self.index += 1
-      return 20 * index
-   }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.index += 1
+        return 20 * index
+    }
 
-   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-      cell.backgroundColor = .getRandomColor()
-      return cell
-   }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.backgroundColor = .getRandomColor()
+        return cell
+    }
 }
 
 // MARK: - KRPullLoadView delegate -------------------
 
 extension CollectionViewSampleVC: KRPullLoadViewDelegate {
-   func pullLoadView(_ pullLoadView: KRPullLoadView, didChangeState state: KRPullLoaderState, viewType type: KRPullLoaderType) {
-      if type == .loadMore {
-         switch state {
-         case let .loading(completionHandler):
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-               completionHandler()
-               self.collectionView.reloadData()
+    func pullLoadView(_ pullLoadView: KRPullLoadView, didChangeState state: KRPullLoaderState, viewType type: KRPullLoaderType) {
+        if type == .loadMore {
+            switch state {
+            case let .loading(completionHandler):
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                    completionHandler()
+                    self.collectionView.reloadData()
+                }
+            default: break
             }
-         default: break
-         }
-         return
-      }
+            return
+        }
 
-      switch state {
-      case .none:
-         pullLoadView.messageLabel.text = ""
+        switch state {
+        case .none:
+            pullLoadView.messageLabel.text = ""
 
-      case let .pulling(offset, threshould):
-         if offset.y > threshould {
-            pullLoadView.messageLabel.text = "Pull more. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
-         } else {
-            pullLoadView.messageLabel.text = "Release to refresh. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
-         }
+        case let .pulling(offset, threshould):
+            if offset.y > threshould {
+                pullLoadView.messageLabel.text = "Pull more. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
+            } else {
+                pullLoadView.messageLabel.text = "Release to refresh. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
+            }
 
-      case let .loading(completionHandler):
-         pullLoadView.messageLabel.text = "Updating..."
-         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
-            completionHandler()
-            self.collectionView.reloadData()
-         }
-      }
-   }
+        case let .loading(completionHandler):
+            pullLoadView.messageLabel.text = "Updating..."
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                completionHandler()
+                self.collectionView.reloadData()
+            }
+        }
+    }
 }

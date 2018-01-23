@@ -9,7 +9,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRPullLoader.svg?style=flat)](https://travis-ci.org/krimpedance/KRPullLoader)
 
-<img src="./Resources/demo.gif" height=400>
+<img src="https://github.com/krimpedance/KRPullLoader/blob/master/Resources/demo.gif" height=400>
 
 ## 特徴
 - 使いやすさ
@@ -99,8 +99,8 @@ func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType)
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
+- 1.1.1 : CompletionHandlerをすぐに呼んだ時のバグを修正.
 - 1.1.0 : Swift4, iOS 8.0 以降に対応.
-- 1.0.1 : ローディングビューの位置が更新されないバグを修正.
 
 ## ライセンス
 KRPullLoaderはMITライセンスに準拠しています.

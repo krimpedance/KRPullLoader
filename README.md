@@ -9,7 +9,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRPullLoader.svg?style=flat)](https://travis-ci.org/krimpedance/KRPullLoader)
 
-<img src="./Resources/demo.gif" height=400>
+<img src="https://github.com/krimpedance/KRPullLoader/blob/master/Resources/demo.gif" height=400>
 
 ## Features
 - Easy-to-use
@@ -96,8 +96,8 @@ This is enum which shows the state of the scrolling.
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 1.1.1 : Fixed bug when calling completion handler immediately.
 - 1.1.0 : Supported from iOS 8.0 and Swift 4.
-- 1.0.1 : The bug by which the location of loading view isn't renewed is corrected.
 
 ## License
 KRPullLoader is available under the MIT license. See the LICENSE file for more info.

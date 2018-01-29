@@ -9,7 +9,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/krimpedance/KRPullLoader.svg?style=flat)](https://travis-ci.org/krimpedance/KRPullLoader)
 
-<img src="https://github.com/krimpedance/KRPullLoader/blob/master/Resources/demo.gif" height=400>
+<img src="https://github.com/krimpedance/Resources/blob/master/KRPullLoader/demo.gif" height=400>
 
 ## Features
 - Easy-to-use

@@ -16,6 +16,7 @@
 		6BD997131EE0F99100C7C273 /* KRPullLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BD997051EE0F99000C7C273 /* KRPullLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BF179631F8DAB6300B58E8E /* KRPullLoadView.swift in Headers */ = {isa = PBXBuildFile; fileRef = 6B296A9D1EE63BE80024A516 /* KRPullLoadView.swift */; settings = {ATTRIBUTES = (Public, ); }; };
 		6BF179641F8DAB6300B58E8E /* UIScrollViewExtensions.swift in Headers */ = {isa = PBXBuildFile; fileRef = 6B803B531EEA8D6300E0A784 /* UIScrollViewExtensions.swift */; settings = {ATTRIBUTES = (Public, ); }; };
+		6BFA23A220444D22009E934B /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BFA23A120444D22009E934B /* NSLayoutConstraintExtensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		6BD9970B1EE0F99100C7C273 /* KRPullLoaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KRPullLoaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6BD997101EE0F99100C7C273 /* KRPullLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KRPullLoaderTests.swift; sourceTree = "<group>"; };
 		6BD997121EE0F99100C7C273 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6BFA23A120444D22009E934B /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				6B2F501F1EE0FCE60060197B /* KRPullLoader.swift */,
 				6B296A9D1EE63BE80024A516 /* KRPullLoadView.swift */,
 				6B803B531EEA8D6300E0A784 /* UIScrollViewExtensions.swift */,
+				6BFA23A120444D22009E934B /* NSLayoutConstraintExtensions.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B2F50201EE0FCE60060197B /* KRPullLoader.swift in Sources */,
+				6BFA23A220444D22009E934B /* NSLayoutConstraintExtensions.swift in Sources */,
 				6B296A9E1EE63BE80024A516 /* KRPullLoadView.swift in Sources */,
 				6B803B541EEA8D6300E0A784 /* UIScrollViewExtensions.swift in Sources */,
 			);

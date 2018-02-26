@@ -2,7 +2,7 @@
 //  KRPullLoadView.swift
 //  KRPullLoader
 //
-//  Copyright © 2017年 Krimpedance. All rights reserved.
+//  Copyright © 2017 Krimpedance. All rights reserved.
 //
 
 import UIKit

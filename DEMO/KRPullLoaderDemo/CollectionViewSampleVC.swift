@@ -35,12 +35,12 @@ extension CollectionViewSampleVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         self.index += 1
-        return 20 * index
+        return 10 * index
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .getRandomColor()
+        cell.backgroundColor = .getColor(with: indexPath.row)
         return cell
     }
 }

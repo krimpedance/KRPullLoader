@@ -21,6 +21,9 @@ class HorizontalCollectionViewSampleVC: UIViewController {
         collectionView.dataSource = self
         collectionView.addPullLoadableView(HorizontalPullLoadView(), type: .refresh)
         collectionView.addPullLoadableView(HorizontalPullLoadView(), type: .loadMore)
+
+        collectionView.contentInset.left = 50
+        collectionView.contentInset.right = 50
     }
 }
 
@@ -33,12 +36,12 @@ extension HorizontalCollectionViewSampleVC: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         index += 1
-        return 20 * index
+        return 10 * index
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .getRandomColor()
+        cell.backgroundColor = .getColor(with: indexPath.row)
         return cell
     }
 }

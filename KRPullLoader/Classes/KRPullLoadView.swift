@@ -27,17 +27,16 @@ public protocol KRPullLoadViewDelegate: class {
  */
 open class KRPullLoadView: UIView, KRPullLoadable {
 
+    private lazy var oneTimeSetUp: Void = { self.setUp() }()
+
     open let activityIndicator = UIActivityIndicatorView()
     open let messageLabel = UILabel()
 
     open weak var delegate: KRPullLoadViewDelegate?
 
-    var shouldSetConstraints = true
-
     open override func layoutSubviews() {
         super.layoutSubviews()
-        if shouldSetConstraints { setUp() }
-        shouldSetConstraints = false
+        _ = oneTimeSetUp
     }
 
     // MARK: - Set up --------------
@@ -50,22 +49,22 @@ open class KRPullLoadView: UIView, KRPullLoadable {
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)
 
-        messageLabel.font = UIFont.systemFont(ofSize: 10)
+        messageLabel.font = .systemFont(ofSize: 10)
         messageLabel.textAlignment = .center
         messageLabel.textColor = .gray
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(messageLabel)
 
         addConstraints([
-            NSLayoutConstraint(item: activityIndicator, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 15.0),
-            NSLayoutConstraint(item: activityIndicator, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: messageLabel, attribute: .top, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1.0, constant: 40.0),
-            NSLayoutConstraint(item: messageLabel, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0.0),
-            NSLayoutConstraint(item: messageLabel, attribute: .bottom, relatedBy: .equal, toItem: self, attribute: .bottom, multiplier: 1.0, constant: -15.0)
-            ])
+            NSLayoutConstraint(item: activityIndicator, attribute: .top, toItem: self, constant: 15.0),
+            NSLayoutConstraint(item: activityIndicator, attribute: .centerX, toItem: self),
+            NSLayoutConstraint(item: messageLabel, attribute: .top, toItem: self, constant: 40.0),
+            NSLayoutConstraint(item: messageLabel, attribute: .centerX, toItem: self),
+            NSLayoutConstraint(item: messageLabel, attribute: .bottom, toItem: self, constant: -15.0)
+        ])
 
         messageLabel.addConstraint(
-            NSLayoutConstraint(item: messageLabel, attribute: .width, relatedBy: .lessThanOrEqual, toItem: nil, attribute: .width, multiplier: 1.0, constant: 300)
+            NSLayoutConstraint(item: messageLabel, attribute: .width, relatedBy: .lessThanOrEqual, constant: 300)
         )
     }
 

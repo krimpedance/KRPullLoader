@@ -11,7 +11,7 @@ import KRPullLoader
 class TableViewSampleVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var index = 0
+    var index = 1
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,24 +24,26 @@ class TableViewSampleVC: UIViewController {
         let loadMoreView = KRPullLoadView()
         loadMoreView.delegate = self
         tableView.addPullLoadableView(loadMoreView, type: .loadMore)
+
+        tableView.contentInset.top = 50
+        tableView.contentInset.bottom = 50
+
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
+//            self.tableView.contentInset.top = 0
+//        }
     }
 }
 
 // MARK: - UITableView data source -------------------
 
 extension TableViewSampleVC: UITableViewDataSource {
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        index += 1
-        return 20 * index
+        return 10 * index
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell")!
-        cell.backgroundColor = .getRandomColor()
+        cell.backgroundColor = .getColor(with: indexPath.row)
         return cell
     }
 }
@@ -55,6 +57,7 @@ extension TableViewSampleVC: KRPullLoadViewDelegate {
             case let .loading(completionHandler):
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                     completionHandler()
+                    self.index += 1
                     self.tableView.reloadData()
                 }
             default: break
@@ -75,10 +78,11 @@ extension TableViewSampleVC: KRPullLoadViewDelegate {
 
         case let .loading(completionHandler):
             pullLoadView.messageLabel.text = "Updating..."
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
                 completionHandler()
+                self.index += 1
                 self.tableView.reloadData()
-//            }
+            }
         }
     }
 }

@@ -27,10 +27,19 @@ public enum KRPullLoaderType {
  - loading: Shows the view.
  You should call `completionHandler` when some actions have been completed.
  */
-public enum KRPullLoaderState {
+public enum KRPullLoaderState: Equatable {
     case none
     case pulling(offset: CGPoint, threshold: CGFloat)
     case loading(completionHandler: ()->Void)
+
+    public static func == (lhs: KRPullLoaderState, rhs: KRPullLoaderState) -> Bool {
+        switch (lhs, rhs) {
+        case (.none, .none), (.loading, .loading): return true
+        case let (.pulling(lOffset, lThreshold), .pulling(rOffset, rThreshold)):
+            return lOffset == rOffset && lThreshold == rThreshold
+        default: return false
+        }
+    }
 }
 
 /**
@@ -48,8 +57,11 @@ public protocol KRPullLoadable: class {
 
 class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
 
+    private lazy var setUpLayoutConstraints: Void = { self.adjustLayoutConstraints() }()
+
     private var observations = [NSKeyValueObservation]()
-    private var addedLoadingInset = CGFloat(0)
+    private var defaultInset = UIEdgeInsets()
+    private var scrollDirectionPositionConstraint: NSLayoutConstraint?
 
     let loadView: T
     let type: KRPullLoaderType
@@ -79,7 +91,7 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        adjustLayoutConstraints()
+        _ = setUpLayoutConstraints
     }
 
     override func willRemoveSubview(_ subview: UIView) {
@@ -104,7 +116,8 @@ private extension KRPullLoader {
         guard let scrollView = self.scrollView else { return }
 
         let contentOffsetObservation = scrollView.observe(\.contentOffset) { _, _ in
-            if case .loading = self.state, self.isHidden { return }
+            if case .loading = self.state { return }
+            if self.isHidden { return }
             self.updateState()
         }
 
@@ -116,25 +129,19 @@ private extension KRPullLoader {
         observations = [contentOffsetObservation, contentSizeObservation]
     }
 
-    func checkScrollViewContentSize() {
-        guard let scrollView = scrollView, type == .loadMore else { return }
-        self.isHidden = scrollView.contentSize.height + scrollView.contentInset.top + scrollView.contentInset.bottom < scrollView.bounds.height
-        adjustLayoutConstraints()
-    }
-
     func updateState() {
         guard let scrollView = scrollView else { return }
 
-        let offset = type == .refresh ? scrollView.distanceOffset : scrollView.distanceEndOffset
-        let offsetValue = scrollDirection == .vertical ? offset.y : offset.x
-        let threshold = scrollDirection == .vertical ? bounds.height : bounds.width
+        let offset = (type == .refresh) ? scrollView.distanceOffset : scrollView.distanceEndOffset
+        let offsetValue = (scrollDirection == .vertical) ? offset.y : offset.x
+        let threshold = (scrollDirection == .vertical) ? bounds.height : bounds.width
 
         if scrollView.isDecelerating && offsetValue < -threshold {
             state = .loading(completionHandler: endLoading)
             startLoading()
         } else if offsetValue < 0 {
             state = .pulling(offset: offset, threshold: -(threshold + 12))
-        } else {
+        } else if state != .none {
             state = .none
         }
     }
@@ -143,17 +150,16 @@ private extension KRPullLoader {
 // MARK: - Layouts -------------------
 
 private extension KRPullLoader {
+    func checkScrollViewContentSize() {
+        if type == .refresh { return }
+        guard let scrollView = scrollView, let constraint = scrollDirectionPositionConstraint else { return }
+        self.isHidden = scrollView.bounds.height > (scrollView.contentSize.height + scrollView.contentInset.top + scrollView.contentInset.bottom)
+        constraint.constant = (scrollDirection == .vertical) ?
+            scrollView.contentSize.height + scrollView.contentInset.bottom :
+            scrollView.contentSize.width + scrollView.contentInset.right
+    }
+
     func adjustLayoutConstraints() {
-        guard let scrollView = scrollView else { return }
-
-        // clear constraints
-        loadView.constraints.forEach {
-            guard ($0.firstItem as? UIView) == self || ($0.secondItem as? UIView) == self else { return }
-            loadView.removeConstraint($0)
-        }
-        removeFromSuperview()
-        scrollView.addSubview(self)
-
         clipsToBounds = true
         translatesAutoresizingMaskIntoConstraints = false
         loadView.translatesAutoresizingMaskIntoConstraints = false
@@ -162,39 +168,21 @@ private extension KRPullLoader {
         addConstraints(attributes.map { NSLayoutConstraint(item: loadView, attribute: $0, toItem: self) })
 
         scrollDirection == .vertical ? adjustVerticalScrollLayoutConstraints() : adjustHorizontalScrollLayoutConstraints()
-
-        if addedLoadingInset == 0 { return }
-
-        switch (scrollDirection, type) {
-        case (.vertical, .refresh):
-            scrollView.contentInset.top += bounds.height - addedLoadingInset
-            scrollView.distanceOffset.y = 0
-
-        case (.vertical, .loadMore):
-            scrollView.contentInset.bottom += bounds.height - addedLoadingInset
-            scrollView.distanceEndOffset.y = 0
-
-        case (.horizontal, .refresh):
-            scrollView.contentInset.left += bounds.width - addedLoadingInset
-            scrollView.distanceOffset.x = 0
-
-        case (.horizontal, .loadMore):
-            scrollView.contentInset.bottom += bounds.width - addedLoadingInset
-            scrollView.distanceEndOffset.x = 0
-        }
-
-        addedLoadingInset = scrollDirection == .vertical ? bounds.height : bounds.width
     }
 
     func adjustVerticalScrollLayoutConstraints() {
         guard let scrollView = scrollView else { return }
 
-        let constant = (type == .refresh) ?
-            -(scrollView.contentInset.top + bounds.height - addedLoadingInset) :
-            scrollView.contentSize.height + scrollView.contentInset.bottom - addedLoadingInset
+        switch type {
+        case .refresh:
+            scrollDirectionPositionConstraint = NSLayoutConstraint(item: self, attribute: .bottom, toItem: scrollView, attribute: .top, constant: -scrollView.contentInset.top)
+        case .loadMore:
+            let constant = scrollView.contentSize.height + scrollView.contentInset.bottom
+            scrollDirectionPositionConstraint = NSLayoutConstraint(item: self, attribute: .top, toItem: scrollView, attribute: .top, constant: constant)
+        }
 
         scrollView.addConstraints([
-            NSLayoutConstraint(item: self, attribute: .top, toItem: scrollView, constant: constant),
+            scrollDirectionPositionConstraint!,
             NSLayoutConstraint(item: self, attribute: .centerX, toItem: scrollView),
             NSLayoutConstraint(item: self, attribute: .width, toItem: scrollView)
         ])
@@ -203,15 +191,20 @@ private extension KRPullLoader {
     func adjustHorizontalScrollLayoutConstraints() {
         guard let scrollView = scrollView else { return }
 
-        let constant = type == .refresh ?
-            -(scrollView.contentInset.left + bounds.width - addedLoadingInset) :
-            scrollView.contentSize.width + scrollView.contentInset.right - addedLoadingInset
+        switch type {
+        case .refresh:
+            let constant = -scrollView.contentInset.left
+            scrollDirectionPositionConstraint = NSLayoutConstraint(item: self, attribute: .right, toItem: scrollView, attribute: .left, constant: constant)
+        case .loadMore:
+            let constant = scrollView.contentSize.width + scrollView.contentInset.right
+            scrollDirectionPositionConstraint = NSLayoutConstraint(item: self, attribute: .left, toItem: scrollView, attribute: .left, constant: constant)
+        }
 
         scrollView.addConstraints([
-            NSLayoutConstraint(item: self, attribute: .left, toItem: scrollView, constant: constant),
+            scrollDirectionPositionConstraint!,
             NSLayoutConstraint(item: self, attribute: .centerY, toItem: scrollView),
             NSLayoutConstraint(item: self, attribute: .height, toItem: scrollView)
-            ])
+        ])
     }
 }
 
@@ -219,34 +212,30 @@ private extension KRPullLoader {
 
 private extension KRPullLoader {
     func startLoading() {
-        switch state {
-        case .loading:
-            addedLoadingInset = scrollDirection == .vertical ? bounds.height : bounds.width
-            animateScrollViewInset(isShow: true)
-        default: break
-        }
+        guard case .loading = state, let scrollView = self.scrollView else { return }
+        defaultInset = scrollView.contentInset
+        animateScrollViewInset(isShow: true)
     }
 
     func endLoading() {
         state = .none
-        animateScrollViewInset(isShow: false) { _ in
-            self.addedLoadingInset = 0
-            self.adjustLayoutConstraints()
-        }
+        animateScrollViewInset(isShow: false)
     }
 
-    func animateScrollViewInset(isShow: Bool, completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: 0.2, animations: {
+    func animateScrollViewInset(isShow: Bool) {
+        guard let scrollView = self.scrollView else { return }
+
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
             switch (self.scrollDirection, self.type) {
             case (.vertical, .refresh):
-                self.scrollView?.contentInset.top += isShow ? self.addedLoadingInset : -self.addedLoadingInset
+                scrollView.contentInset.top = self.defaultInset.top + (isShow ? self.bounds.height : 0)
             case (.vertical, .loadMore):
-                self.scrollView?.contentInset.bottom += isShow ? self.addedLoadingInset : -self.addedLoadingInset
+                scrollView.contentInset.bottom = self.defaultInset.bottom + (isShow ? self.bounds.height : 0)
             case (.horizontal, .refresh):
-                self.scrollView?.contentInset.left += isShow ? self.addedLoadingInset : -self.addedLoadingInset
+                scrollView.contentInset.left = self.defaultInset.left + (isShow ? self.bounds.width : 0)
             case (.horizontal, .loadMore):
-                self.scrollView?.contentInset.right += isShow ? self.addedLoadingInset : -self.addedLoadingInset
+                scrollView.contentInset.right = self.defaultInset.right + (isShow ? self.bounds.width : 0)
             }
-        }, completion: completion)
+        }, completion: nil)
     }
 }

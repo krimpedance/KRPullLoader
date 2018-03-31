@@ -96,6 +96,7 @@ This is enum which shows the state of the scrolling.
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 1.1.3 : Compatible with Swift 4.1.
 - 1.1.2 : Fixed bug of jerky scrolling. Improved performance.
 - 1.1.1 : Fixed bug when calling completion handler immediately.
 - 1.1.0 : Supported from iOS 8.0 and Swift 4.

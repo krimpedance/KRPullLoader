@@ -70,7 +70,7 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
         return superview as? UIScrollView
     }
 
-    var scrollDirection: UICollectionViewScrollDirection {
+    var scrollDirection: UICollectionView.ScrollDirection {
         return ((superview as? UICollectionView)?.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection ?? .vertical
     }
 
@@ -164,7 +164,7 @@ private extension KRPullLoader {
         translatesAutoresizingMaskIntoConstraints = false
         loadView.translatesAutoresizingMaskIntoConstraints = false
 
-        let attributes: [NSLayoutAttribute] = [.top, .left, .right, .bottom]
+        let attributes: [NSLayoutConstraint.Attribute] = [.top, .left, .right, .bottom]
         addConstraints(attributes.map { NSLayoutConstraint(item: loadView, attribute: $0, toItem: self) })
 
         scrollDirection == .vertical ? adjustVerticalScrollLayoutConstraints() : adjustHorizontalScrollLayoutConstraints()

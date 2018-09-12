@@ -16,9 +16,9 @@
 - Possibles both of `pull refresh` and `load more`.
 
 ## Requirements
-- iOS 8.0+
-- Xcode 9.0+
-- Swift 4.0+
+- iOS 10.3+
+- Xcode 10.0+
+- Swift 4.2+
 
 ## DEMO
 To run the example project, clone the repo, and open `KRPullLoaderDemo.xcodeproj` from the DEMO directory.
@@ -96,6 +96,7 @@ This is enum which shows the state of the scrolling.
 I'm seeking bug reports and feature requests.
 
 ## Release Note
+- 1.1.4 : Supported from iOS 10.3 and Swift 4.2.
 - 1.1.3 : Compatible with Swift 4.1.
 - 1.1.2 : Fixed bug of jerky scrolling. Improved performance.
 - 1.1.1 : Fixed bug when calling completion handler immediately.

@@ -29,8 +29,8 @@ open class KRPullLoadView: UIView, KRPullLoadable {
 
     private lazy var oneTimeSetUp: Void = { self.setUp() }()
 
-    open let activityIndicator = UIActivityIndicatorView()
-    open let messageLabel = UILabel()
+    public let activityIndicator = UIActivityIndicatorView()
+    public let messageLabel = UILabel()
 
     open weak var delegate: KRPullLoadViewDelegate?
 
@@ -44,7 +44,7 @@ open class KRPullLoadView: UIView, KRPullLoadable {
     open func setUp() {
         backgroundColor = .clear
 
-        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.style = .gray
         activityIndicator.hidesWhenStopped = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)

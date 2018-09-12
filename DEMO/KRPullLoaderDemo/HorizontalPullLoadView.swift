@@ -10,7 +10,7 @@ import KRPullLoader
 
 class HorizontalPullLoadView: UIView {
 
-    open let activityIndicator = UIActivityIndicatorView()
+    public let activityIndicator = UIActivityIndicatorView()
 
     var shouldSetConstraints = true
 
@@ -27,7 +27,7 @@ extension HorizontalPullLoadView {
     func setUp() {
         backgroundColor = .clear
 
-        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.style = .gray
         activityIndicator.hidesWhenStopped = false
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
         addSubview(activityIndicator)

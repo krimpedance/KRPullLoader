@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "KRPullLoader"
-  s.version      = "1.1.1"
+  s.version      = "1.1.4"
   s.summary      = "A 'pull to load' control for UIScrollView(, UITableView, UICollectionView, ...)."
   s.description  = "KRPullLoader is a 'pull to load' control for UIScrollView(, UITableView, UICollectionView, ...) on iOS."
   s.homepage     = "https://github.com/krimpedance/KRPullLoader"
@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
 
   s.author       = { "krimpedance" => "krimpedance@gmail.com" }
   s.requires_arc = true
-  s.platform     = :ios, '8.0'
-  s.ios.deployment_target = '8.0'
+  s.platform     = :ios, '10.3'
+  s.ios.deployment_target = '10.3'
 
   s.source       = { :git => "https://github.com/krimpedance/KRPullLoader.git", :tag => s.version.to_s }
   s.source_files = "KRPullLoader/**/*.swift"

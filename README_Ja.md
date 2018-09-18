@@ -16,7 +16,7 @@
 - `引っ張って更新`, `もっと読み込む`の両アクションに対応
 
 ## 必要環境
-- iOS 10.3+
+- iOS 8.0+
 - Xcode 10.0+
 - Swift 4.2+
 
@@ -99,7 +99,7 @@ func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType)
 バグや機能のリクエストがありましたら，気軽にコメントしてください．
 
 ## リリースノート
-- 1.1.4 : Swift 4.2, iOS 10.3 以降に対応.
+- 1.2.0 : Swift 4.2 に対応.
 - 1.1.3 : Swift 4.1 に対応.
 - 1.1.2 : スクロール時のバグを修正. パフォーマンスの改善.
 - 1.1.1 : CompletionHandlerをすぐに呼んだ時のバグを修正.

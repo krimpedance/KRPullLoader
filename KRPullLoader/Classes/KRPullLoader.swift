@@ -82,9 +82,9 @@ class KRPullLoader: UIView {
         _ = setUpLayoutConstraints
     }
 
-    override func willRemoveSubview(_ subview: UIView) {
-        guard subview == loadView else { return }
-        observations = []
+    override func willMove(toSuperview newSuperview: UIView?) {
+        super.willMove(toSuperview: newSuperview)
+        if newSuperview == nil { observations = [] }
     }
 }
 
@@ -94,15 +94,17 @@ private extension KRPullLoader {
     func addObservers() {
         guard let scrollView = self.scrollView else { return }
 
-        let contentOffsetObservation = scrollView.observe(\.contentOffset) { _, _ in
-            if case .loading = self.state { return }
-            if self.isHidden { return }
-            self.updateState()
+        let contentOffsetObservation = scrollView.observe(\.contentOffset) { [weak self] _, _ in
+            guard let wSelf = self else { return }
+            if case .loading = wSelf.state { return }
+            if wSelf.isHidden { return }
+            wSelf.updateState()
         }
 
-        let contentSizeObservation = scrollView.observe(\.contentSize) { _, _ in
-            if case .loading = self.state { return }
-            self.checkScrollViewContentSize()
+        let contentSizeObservation = scrollView.observe(\.contentSize) { [weak self] _, _ in
+            guard let wSelf = self else { return }
+            if case .loading = wSelf.state { return }
+            wSelf.checkScrollViewContentSize()
         }
 
         observations = [contentOffsetObservation, contentSizeObservation]
@@ -147,6 +149,8 @@ private extension KRPullLoader {
         addConstraints(attributes.map { NSLayoutConstraint(item: loadView, attribute: $0, toItem: self) })
 
         scrollDirection == .vertical ? adjustVerticalScrollLayoutConstraints() : adjustHorizontalScrollLayoutConstraints()
+
+        checkScrollViewContentSize()
     }
 
     func adjustVerticalScrollLayoutConstraints() {

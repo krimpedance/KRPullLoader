@@ -7,24 +7,19 @@
 
 import UIKit
 
-/**
- Delegate for KRPullLoadView.
- */
+/// Delegate for KRPullLoadView.
 public protocol KRPullLoadViewDelegate: class {
-    /**
-     Handler when KRPullLoaderState value changed.
-     
-     - parameter pullLoadView: KRPullLoadView.
-     - parameter state:        New state.
-     - parameter type:         KRPullLoaderType.
-     */
+    /// Handler when KRPullLoaderState value changed.
+    ///
+    /// - Parameters:
+    ///   - pullLoadView: KRPullLoadView.
+    ///   - state: New state.
+    ///   - type: KRPullLoaderType.
     func pullLoadView(_ pullLoadView: KRPullLoadView, didChangeState state: KRPullLoaderState, viewType type: KRPullLoaderType)
 }
 
-/**
- Simple view which inherited KRPullLoadable protocol.
- This has only activity indicator and message label.
- */
+/// Simple view which inherited KRPullLoadable protocol.
+/// This has only activity indicator and message label.
 open class KRPullLoadView: UIView, KRPullLoadable {
 
     private lazy var oneTimeSetUp: Void = { self.setUp() }()
@@ -39,7 +34,7 @@ open class KRPullLoadView: UIView, KRPullLoadable {
         _ = oneTimeSetUp
     }
 
-    // MARK: - Set up --------------
+    // Set up ------------
 
     open func setUp() {
         backgroundColor = .clear
@@ -68,7 +63,7 @@ open class KRPullLoadView: UIView, KRPullLoadable {
         )
     }
 
-    // MARK: - KRPullLoadable --------------
+    // KRPullLoadable ------------
 
     open func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType) {
         switch state {

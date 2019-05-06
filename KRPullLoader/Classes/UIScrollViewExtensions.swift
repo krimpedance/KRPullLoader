@@ -7,33 +7,6 @@
 
 import UIKit
 
-// MARK: - Public extensions ---------------
-
-extension UIScrollView {
-    /**
-     Adds the PullLoadableView.
-     
-     - parameter loadView: view that contain KRPullLoadable.
-     - parameter type:     KRPullLoaderType. Default type is `.refresh`.
-     */
-    public func addPullLoadableView<T>(_ loadView: T, type: KRPullLoaderType = .refresh) where T: UIView, T: KRPullLoadable {
-        let loader = KRPullLoader(loadView: loadView, type: type)
-        insertSubview(loader, at: 0)
-        loader.setUp()
-    }
-
-    /**
-     Remove the PullLoadableView.
-     
-     - parameter loadView: view which inherited KRPullLoadable protocol.
-     */
-    public func removePullLoadableView<T>(_ loadView: T) where T: UIView, T: KRPullLoadable {
-        loadView.removeFromSuperview()
-    }
-}
-
-// MARK: - Internal extensions ---------------
-
 extension UIScrollView {
     var distanceOffset: CGPoint {
         get {
@@ -43,10 +16,11 @@ extension UIScrollView {
             )
         }
         set {
-            contentOffset = CGPoint(
+            let point = CGPoint(
                 x: newValue.x - contentInset.left,
                 y: newValue.y - contentInset.top
             )
+            setContentOffset(point, animated: true)
         }
     }
 
@@ -63,5 +37,34 @@ extension UIScrollView {
                 y: newValue.y - (bounds.height - (contentSize.height + contentInset.bottom))
             )
         }
+    }
+}
+
+// MARK: - Public UIScrollView extensions ------------
+
+public extension UIScrollView {
+    /// Adds the PullLoadableView.
+    ///
+    /// - Parameters:
+    ///   - loadView: view that contain KRPullLoadable.
+    ///   - type: KRPullLoaderType. Default type is `.refresh`.
+    func addPullLoadableView(_ loadView: KRPullLoadable, type: KRPullLoaderType = .refresh) {
+        let loader = KRPullLoader(loadView: loadView, type: type)
+        insertSubview(loader, at: 0)
+        loader.setUp()
+    }
+
+    /// Remove the PullLoadableView.
+    ///
+    /// - Parameter type: KRPullLoaderType.
+    func removePullLoadableView(type: KRPullLoaderType) {
+        guard let loader = subviews.first(where: { ($0 as? KRPullLoader)?.type == type }) else { return }
+        loader.removeFromSuperview()
+    }
+
+    /// Pull to refresh programmatically
+    func pullToRefresh() {
+        guard let loader = subviews.first(where: { ($0 as? KRPullLoader)?.type == .refresh }) as? KRPullLoader else { return }
+        loader.startLoading(force: true)
     }
 }

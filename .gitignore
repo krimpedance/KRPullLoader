@@ -18,3 +18,8 @@ profile
 DerivedData
 *.hmap
 *.ipa
+
+# KRPullLoader
+Carthage
+Pods
+DEMO/Podfile.lock

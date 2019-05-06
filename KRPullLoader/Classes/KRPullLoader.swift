@@ -7,26 +7,19 @@
 
 import UIKit
 
-/**
- Type of KRPullLoader's position.
- 
- - refresh:  At the head of UIScrollView's scroll direction
- - loadMore: At the tail of UIScrollView's scroll direction
- */
+/// Type of KRPullLoader's position.
+///
+/// - refresh:  At the head of UIScrollView's scroll direction
+/// - loadMore: At the tail of UIScrollView's scroll direction
 public enum KRPullLoaderType {
     case refresh, loadMore
 }
 
-/**
- State of KRPullLoader
- 
- - none:    hides the view.
- - pulling: Pulling.
- `offset` is pull offset (always <= 0).
- This state changes to `loading` when `offset` exceeded `threshold`.
- - loading: Shows the view.
- You should call `completionHandler` when some actions have been completed.
- */
+/// State of KRPullLoader
+///
+/// - none: hides the view.
+/// - pulling: pulling. `offset` is pull offset (always <= 0).
+/// - loading: Shows the view. You should call `completionHandler` when some actions have been completed.
 public enum KRPullLoaderState: Equatable {
     case none
     case pulling(offset: CGPoint, threshold: CGFloat)
@@ -42,20 +35,17 @@ public enum KRPullLoaderState: Equatable {
     }
 }
 
-/**
- KRPullLoadable is a protocol for views added to UIScrollView.
- */
-public protocol KRPullLoadable: class {
-    /**
-     Handler when KRPullLoaderState value changed.
-     
-     - parameter state: New state.
-     - parameter type:  KRPullLoaderType.
-     */
+/// KRPullLoadable is a protocol for views added to UIScrollView.
+public protocol KRPullLoadable: UIView {
+    /// Handler when KRPullLoaderState value changed.
+    ///
+    /// - Parameters:
+    ///   - state: New state.
+    ///   - type: KRPullLoaderType.
     func didChangeState(_ state: KRPullLoaderState, viewType type: KRPullLoaderType)
 }
 
-class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
+class KRPullLoader: UIView {
 
     private lazy var setUpLayoutConstraints: Void = { self.adjustLayoutConstraints() }()
 
@@ -63,12 +53,10 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
     private var defaultInset = UIEdgeInsets()
     private var scrollDirectionPositionConstraint: NSLayoutConstraint?
 
-    let loadView: T
+    let loadView: KRPullLoadable
     let type: KRPullLoaderType
 
-    var scrollView: UIScrollView? {
-        return superview as? UIScrollView
-    }
+    var scrollView: UIScrollView? { return superview as? UIScrollView }
 
     var scrollDirection: UICollectionView.ScrollDirection {
         return ((superview as? UICollectionView)?.collectionViewLayout as? UICollectionViewFlowLayout)?.scrollDirection ?? .vertical
@@ -80,7 +68,7 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
         }
     }
 
-    init(loadView: T, type: KRPullLoaderType) {
+    init(loadView: KRPullLoadable, type: KRPullLoaderType) {
         self.loadView = loadView
         self.type = type
         super.init(frame: loadView.bounds)
@@ -100,16 +88,7 @@ class KRPullLoader<T>: UIView where T: UIView, T: KRPullLoadable {
     }
 }
 
-// MARK: - Actions -------------------
-
-extension KRPullLoader {
-    func setUp() {
-        checkScrollViewContentSize()
-        addObservers()
-    }
-}
-
-// MARK: - Private Actions -------------------
+// MARK: - Private actions ------------
 
 private extension KRPullLoader {
     func addObservers() {
@@ -137,7 +116,7 @@ private extension KRPullLoader {
         let threshold = (scrollDirection == .vertical) ? bounds.height : bounds.width
 
         if scrollView.isDecelerating && offsetValue < -threshold {
-            state = .loading(completionHandler: endLoading)
+            state = .loading { [weak self] in self?.endLoading() }
             startLoading()
         } else if offsetValue < 0 {
             state = .pulling(offset: offset, threshold: -(threshold + 12))
@@ -147,7 +126,7 @@ private extension KRPullLoader {
     }
 }
 
-// MARK: - Layouts -------------------
+// MARK: - Layouts ------------
 
 private extension KRPullLoader {
     func checkScrollViewContentSize() {
@@ -208,15 +187,9 @@ private extension KRPullLoader {
     }
 }
 
-// MARK: - Loading actions -------------------
+// MARK: - Loading actions ------------
 
 private extension KRPullLoader {
-    func startLoading() {
-        guard case .loading = state, let scrollView = self.scrollView else { return }
-        defaultInset = scrollView.contentInset
-        animateScrollViewInset(isShow: true)
-    }
-
     func endLoading() {
         state = .none
         animateScrollViewInset(isShow: false)
@@ -225,7 +198,7 @@ private extension KRPullLoader {
     func animateScrollViewInset(isShow: Bool) {
         guard let scrollView = self.scrollView else { return }
 
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [unowned self] in
             switch (self.scrollDirection, self.type) {
             case (.vertical, .refresh):
                 scrollView.contentInset.top = self.defaultInset.top + (isShow ? self.bounds.height : 0)
@@ -239,5 +212,26 @@ private extension KRPullLoader {
                 break
             }
         }, completion: nil)
+    }
+}
+
+// MARK: - Actions ------------
+
+extension KRPullLoader {
+    func setUp() {
+        checkScrollViewContentSize()
+        addObservers()
+    }
+
+    func startLoading(force: Bool = false) {
+        if force {
+            if case .loading = state { return }
+            if type == .loadMore { return }
+            state = .loading { [weak self] in self?.endLoading() }
+        }
+        guard case .loading = state, let scrollView = self.scrollView else { return }
+        layoutIfNeeded() // adjust bounds.size
+        defaultInset = scrollView.contentInset
+        animateScrollViewInset(isShow: true)
     }
 }

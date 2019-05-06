@@ -27,10 +27,6 @@ class TableViewSampleVC: UIViewController {
 
         tableView.contentInset.top = 50
         tableView.contentInset.bottom = 50
-
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5) {
-//            self.tableView.contentInset.top = 0
-//        }
     }
 }
 

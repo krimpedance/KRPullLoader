@@ -11,64 +11,27 @@
 		6B0E3F2F1EE4EE08001053BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0E3F291EE4EE08001053BF /* Main.storyboard */; };
 		6B0E3F311EE4EE08001053BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B0E3F2C1EE4EE08001053BF /* LaunchScreen.storyboard */; };
 		6B0E3F321EE4EE08001053BF /* TableViewSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0E3F2D1EE4EE08001053BF /* TableViewSampleVC.swift */; };
-		6B803B361EE6764900E0A784 /* KRPullLoader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B803B331EE6761E00E0A784 /* KRPullLoader.framework */; };
-		6B803B371EE6764900E0A784 /* KRPullLoader.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6B803B331EE6761E00E0A784 /* KRPullLoader.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6B803B471EE95A5A00E0A784 /* HorizontalPullLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B803B461EE95A5A00E0A784 /* HorizontalPullLoadView.swift */; };
 		6B803B491EEA32E600E0A784 /* CollectionViewSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B803B481EEA32E600E0A784 /* CollectionViewSampleVC.swift */; };
 		6B803B4C1EEA40C100E0A784 /* HorizontalCollectionViewSampleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B803B4B1EEA40C100E0A784 /* HorizontalCollectionViewSampleVC.swift */; };
 		6B803B521EEA451900E0A784 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B803B511EEA451900E0A784 /* UIColorExtension.swift */; };
+		A0D3AAA248C2969B8987D4F7 /* Pods_KRPullLoaderDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0A26CCCA68595BDDA031797 /* Pods_KRPullLoaderDemo.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		6B803B321EE6761E00E0A784 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BD997021EE0F99000C7C273;
-			remoteInfo = KRPullLoader;
-		};
-		6B803B341EE6761E00E0A784 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 6BD9970B1EE0F99100C7C273;
-			remoteInfo = KRPullLoaderTests;
-		};
-		6B803B381EE6764900E0A784 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 6BD997011EE0F99000C7C273;
-			remoteInfo = KRPullLoader;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		6B2F50251EE102080060197B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				6B803B371EE6764900E0A784 /* KRPullLoader.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
+		3A91C976D96A88AEDC538D0E /* Pods-KRPullLoaderDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KRPullLoaderDemo.debug.xcconfig"; path = "Target Support Files/Pods-KRPullLoaderDemo/Pods-KRPullLoaderDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		6B0587FC1EE0FA38004763D4 /* KRPullLoaderDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRPullLoaderDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6B0E3F281EE4EE08001053BF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6B0E3F2A1EE4EE08001053BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6B0E3F2B1EE4EE08001053BF /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B0E3F2C1EE4EE08001053BF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0E3F2D1EE4EE08001053BF /* TableViewSampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewSampleVC.swift; sourceTree = "<group>"; };
-		6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KRPullLoader.xcodeproj; path = ../KRPullLoader.xcodeproj; sourceTree = "<group>"; };
 		6B803B461EE95A5A00E0A784 /* HorizontalPullLoadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPullLoadView.swift; sourceTree = "<group>"; };
 		6B803B481EEA32E600E0A784 /* CollectionViewSampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewSampleVC.swift; sourceTree = "<group>"; };
 		6B803B4B1EEA40C100E0A784 /* HorizontalCollectionViewSampleVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalCollectionViewSampleVC.swift; sourceTree = "<group>"; };
 		6B803B511EEA451900E0A784 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		A0A26CCCA68595BDDA031797 /* Pods_KRPullLoaderDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KRPullLoaderDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4FDBEE956B8CBB710ACD23F /* Pods-KRPullLoaderDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KRPullLoaderDemo.release.xcconfig"; path = "Target Support Files/Pods-KRPullLoaderDemo/Pods-KRPullLoaderDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,19 +39,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B803B361EE6764900E0A784 /* KRPullLoader.framework in Frameworks */,
+				A0D3AAA248C2969B8987D4F7 /* Pods_KRPullLoaderDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5D129E5C90FC4890C2431E2B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3A91C976D96A88AEDC538D0E /* Pods-KRPullLoaderDemo.debug.xcconfig */,
+				E4FDBEE956B8CBB710ACD23F /* Pods-KRPullLoaderDemo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6B0587F31EE0FA38004763D4 = {
 			isa = PBXGroup;
 			children = (
 				6B0E3F271EE4EE08001053BF /* KRPullLoaderDemo */,
 				6B0587FD1EE0FA38004763D4 /* Products */,
-				6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */,
+				5D129E5C90FC4890C2431E2B /* Pods */,
+				F5EEA70B7302F4A6BCEAA155 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,21 +89,20 @@
 			path = KRPullLoaderDemo;
 			sourceTree = "<group>";
 		};
-		6B803B2E1EE6761C00E0A784 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				6B803B331EE6761E00E0A784 /* KRPullLoader.framework */,
-				6B803B351EE6761E00E0A784 /* KRPullLoaderTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		6B803B4E1EEA40C800E0A784 /* CustomLoader */ = {
 			isa = PBXGroup;
 			children = (
 				6B803B461EE95A5A00E0A784 /* HorizontalPullLoadView.swift */,
 			);
 			name = CustomLoader;
+			sourceTree = "<group>";
+		};
+		F5EEA70B7302F4A6BCEAA155 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A0A26CCCA68595BDDA031797 /* Pods_KRPullLoaderDemo.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,16 +112,16 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6B05880E1EE0FA38004763D4 /* Build configuration list for PBXNativeTarget "KRPullLoaderDemo" */;
 			buildPhases = (
+				448B3D95FA82A1E8297F9EF0 /* [CP] Check Pods Manifest.lock */,
 				6B0587F81EE0FA38004763D4 /* Sources */,
 				6B0587F91EE0FA38004763D4 /* Frameworks */,
 				6B0587FA1EE0FA38004763D4 /* Resources */,
 				6B2F501E1EE0FACC0060197B /* Swift Lint */,
-				6B2F50251EE102080060197B /* Embed Frameworks */,
+				C43E7E37CB01727CC4E912C3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				6B803B391EE6764900E0A784 /* PBXTargetDependency */,
 			);
 			name = KRPullLoaderDemo;
 			productName = KRPullLoaderDemo;
@@ -163,7 +135,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Krimpedance;
 				TargetAttributes = {
 					6B0587FB1EE0FA38004763D4 = {
@@ -178,41 +150,19 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
 			mainGroup = 6B0587F31EE0FA38004763D4;
 			productRefGroup = 6B0587FD1EE0FA38004763D4 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 6B803B2E1EE6761C00E0A784 /* Products */;
-					ProjectRef = 6B781E051EE6742400713A28 /* KRPullLoader.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				6B0587FB1EE0FA38004763D4 /* KRPullLoaderDemo */,
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		6B803B331EE6761E00E0A784 /* KRPullLoader.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = KRPullLoader.framework;
-			remoteRef = 6B803B321EE6761E00E0A784 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		6B803B351EE6761E00E0A784 /* KRPullLoaderTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = KRPullLoaderTests.xctest;
-			remoteRef = 6B803B341EE6761E00E0A784 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6B0587FA1EE0FA38004763D4 /* Resources */ = {
@@ -227,6 +177,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		448B3D95FA82A1E8297F9EF0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-KRPullLoaderDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		6B2F501E1EE0FACC0060197B /* Swift Lint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -240,6 +212,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"SwiftLint does not exist, download from https://github.com/realm/SwiftLint\"\nfi";
+		};
+		C43E7E37CB01727CC4E912C3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-KRPullLoaderDemo/Pods-KRPullLoaderDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/KRPullLoader/KRPullLoader.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRPullLoader.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-KRPullLoaderDemo/Pods-KRPullLoaderDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -259,14 +253,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		6B803B391EE6764900E0A784 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KRPullLoader;
-			targetProxy = 6B803B381EE6764900E0A784 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		6B0E3F291EE4EE08001053BF /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -283,6 +269,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -328,14 +315,14 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -343,6 +330,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -382,20 +370,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		6B05880F1EE0FA38004763D4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3A91C976D96A88AEDC538D0E /* Pods-KRPullLoaderDemo.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/KRPullLoaderDemo/Info.plist";
@@ -407,14 +395,14 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.krimpedance.KRPullLoaderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		6B0588101EE0FA38004763D4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E4FDBEE956B8CBB710ACD23F /* Pods-KRPullLoaderDemo.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "$(SRCROOT)/KRPullLoaderDemo/Info.plist";
@@ -426,7 +414,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.krimpedance.KRPullLoaderDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

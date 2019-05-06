@@ -1,0 +1,7 @@
+platform :ios, '12.0'
+
+target 'KRPullLoaderDemo' do
+  use_frameworks!
+
+  pod 'KRPullLoader', path: '../KRPullLoader.podspec'
+end

@@ -3,8 +3,9 @@ disabled_rules:
   - file_length
 included:
   - KRPullLoader
+  - KRPullLoaderTests
 excluded:
-  - DEMO/
+  - Pods
 type_body_length:
   - 400 # warning
   - 500 # error

@@ -235,6 +235,8 @@ private extension KRPullLoader {
                 scrollView.contentInset.left = self.defaultInset.left + (isShow ? self.bounds.width : 0)
             case (.horizontal, .loadMore):
                 scrollView.contentInset.right = self.defaultInset.right + (isShow ? self.bounds.width : 0)
+            case (_, _):
+                break
             }
         }, completion: nil)
     }
